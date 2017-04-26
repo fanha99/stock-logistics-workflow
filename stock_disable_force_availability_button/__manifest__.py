@@ -9,7 +9,7 @@
               "AvanzOSC,"
               "Tecnativa - Pedro M. Baeza,"
               "Odoo Community Association (OCA),"
-              "Agile Business Group",
+              "Agile Business Group,"
               "Fanha Giang",
     "website": "http://www.odoomrp.com",
     "category": "Warehouse Management",
