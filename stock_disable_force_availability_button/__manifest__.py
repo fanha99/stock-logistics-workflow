@@ -5,9 +5,8 @@
     "name": "Disable force availability button",
     "version": "10.0.1.0.0",
     "depends": ["stock"],
-    "author": "OdooMRP team,"
-              "AvanzOSC,"
-              "Tecnativa - Pedro M. Baeza,"
+    "author": "AvanzOSC,"
+              "Tecnativa,"
               "Odoo Community Association (OCA),"
               "Agile Business Group,"
               "Fanha Giang",

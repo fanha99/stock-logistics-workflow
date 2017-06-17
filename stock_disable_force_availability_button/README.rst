@@ -32,9 +32,11 @@ Contributors
 ------------
 
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
-* Pedro M. Baeza <pedro.baeza@serviciobaeza.com>
+* Pedro M. Baeza <pedro.baeza@tecnativa.com>
 * Ana Juaristi <anajuaristi@avanzosc.es>
 * Alessio Gerace <alessio.gerace@agilebg.com>
+* Fanha Giang <fanha99@hotmail.com>
+* Denis Roussel <denis.roussel@acsone.eu>
 
 Maintainer
 ----------
