@@ -7,11 +7,11 @@
 
 {
     'name': 'Stock Move Backdating',
-    'version': '10.0.1.0.0',
+    'version': '11.0.1.0.0',
     'category': 'Stock Logistics',
     'license': 'AGPL-3',
     'author': 'Marco Dieckhoff, BREMSKERL, Agile Business Group, '
-              'Odoo Community Association (OCA)',
+              'Fanha Giang, Odoo Community Association (OCA)',
     'website': 'https://github.com/OCA/stock-logistics-workflow',
     'depends': ['stock_account'],
     'data': [

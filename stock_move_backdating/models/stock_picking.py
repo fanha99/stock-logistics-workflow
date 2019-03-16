@@ -9,8 +9,8 @@ class StockPicking(models.Model):
     _inherit = "stock.picking"
 
     @api.multi
-    def do_transfer(self):
-        result = super(StockPicking, self).do_transfer()
+    def action_done(self):
+        result = super(StockPicking, self).action_done()
         for picking in self:
             # set date_done as the youngest date among the moves
             dates = picking.move_lines.filtered(

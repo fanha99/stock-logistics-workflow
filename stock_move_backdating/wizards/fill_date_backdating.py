@@ -3,8 +3,14 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
-from ..models.stock_pack_operation import check_date
+from odoo.exceptions import UserError
 
+def check_date(date):
+    now = fields.Datetime.now()
+    if date and date > now:
+        raise UserError(
+            "You can not process an actual "
+            "movement date in the future.")
 
 class FillDateBackdating(models.TransientModel):
     _name = "fill.date.backdating"
@@ -20,6 +26,5 @@ class FillDateBackdating(models.TransientModel):
         """ Fill the Actual Movement Date on all pack operations. """
         self.ensure_one()
         picking = self.env['stock.picking'].browse(self._context['active_id'])
-        picking.pack_operation_product_ids.write(
-            {'date_backdating': self.date_backdating})
+        picking.write({'date_done': self.date_backdating})
         return {'type': 'ir.actions.act_window_close'}

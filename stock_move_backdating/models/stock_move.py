@@ -5,24 +5,24 @@
 # Copyright 2018 Alex Comba - Agile Business Group
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models
-from ..models.stock_pack_operation import check_date
+from odoo import api, models, fields
+from ..wizards.fill_date_backdating import check_date
 
 
 class StockMove(models.Model):
     _inherit = "stock.move"
 
     @api.multi
-    def action_done(self):
+    def _action_done(self):
         # do actual processing
-        result = super(StockMove, self).action_done()
+        result = super(StockMove, self)._action_done()
         # overwrite date field where applicable
-        for move in self:
-            if move.linked_move_operation_ids:
-                operation = move.linked_move_operation_ids[0]
-                if operation.operation_id.date_backdating:
-                    move.date = operation.operation_id.date_backdating
-                    if move.quant_ids:
-                        check_date(move.date)
-                        move.quant_ids.sudo().write({'in_date': move.date})
+        for move in result:
+            if not move.picking_id.date_done:
+                move.picking_id.write({'date_done': fields.Datetime.now()})
+            else:
+                check_date(move.picking_id.date_done)
+                move.write({'date': move.picking_id.date_done})
+                for ml in move.move_line_ids:
+                    ml.write({'date': move.picking_id.date_done})
         return result
